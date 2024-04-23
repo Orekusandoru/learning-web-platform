@@ -1,11 +1,8 @@
-import CreateItemForm from "./components/CreateItemForm";
+import AppRoutes from "./AppRoutes"
 
 function App() {
   return (
-    <>
-      <h1>Create Item</h1>
-      <CreateItemForm />
-    </>
+    <AppRoutes/>
   );
 }
 
