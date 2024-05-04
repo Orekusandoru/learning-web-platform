@@ -16,10 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .views import send_message
+
 
 urlpatterns = [
-    # Додайте URL-маршрути вашого додатку тут
+   
+    path('admin/', admin.site.urls),
+    path('backend/', include('backend.urls')),
     
-    # path('api/', include('mycomponent.urls')),
 ]
