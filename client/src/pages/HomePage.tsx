@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { UserContext } from "../components/UserContext";
-
+import {Image} from "../components"
 
 
 export default function HomePage() {
@@ -11,6 +11,8 @@ export default function HomePage() {
       
       {userInfo.id === 0 || userInfo.id === undefined ? (
         <div className="pt-72">
+          <Image.Gosling/>
+          <Image.ReactLogo size={200}/>
           <div className=" text-center w-[50rem] text-3xl bg-gradient-to-r from-cyan-700 to-purple-700 border-4 border-black p-4 rounded-md shadow-lg ">
             <p><a className="text-green-500 font-bold " href="/register">Sign up </a> 
               or <a className="text-green-500 font-bold" href="/login">Sign in</a>
