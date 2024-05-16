@@ -29,7 +29,7 @@ export default function LoginPage() {
     const onSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            const response = await axios.post(`${BACKEND_URL}/api/auth`, {
+            const response = await axios.post(`${BACKEND_URL}/backend/auth`, {
                 username,
                 password,
             })
