@@ -49,7 +49,7 @@ export default function LoginPage() {
             <div className="bg-white px-8 pt-8 pb-12
             rounded-sm shadow-2xl my-32">
                 <form className=" " onSubmit={(e) => onSubmit(e)}>
-                    <h1 className="text-black tracking-wide text-3xl font-black mb-8 centerForm">Login</h1>
+                    <h1 className="text-black tracking-wide text-3xl font-black mb-8 centerForm">RegisterPage</h1>
 
                     <h2 className="textOverInputField">Username</h2>
                     <input type="text"
