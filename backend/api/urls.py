@@ -1,11 +1,14 @@
-from django.urls import path, include, re_path
-from django.views.generic import TemplateView
+from django.urls import path
+from . import views
+
+from rest_framework_simplejwt.views import (
+    TokenRefreshView,
+)
 
 urlpatterns = [
-    path('auth/', include('djoser.urls')),
-    path('auth/', include('djoser.urls.jwt')),
+    path('token/', views.MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('register/', views.RegisterView.as_view(), name='auth_register'),
+    path('test/', views.testEndPoint, name='test'),
+    path('', views.getRoutes),
 ]
-
-urlpatterns += [re_path(r'^.*', TemplateView.as_view(template_name='index.html'))]
-    
-
