@@ -2,6 +2,7 @@ from django.db import models
 
 class Course(models.Model):
     name = models.CharField(max_length = 60 , null = False)
+    slug = models.SlugField(max_length=60, unique=True, blank=True)
     description = models.CharField(max_length = 250 , null = True)
     active = models.BooleanField(default = False)
     thumbnail = models.ImageField(upload_to = "files/thumbnail") 
