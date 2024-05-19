@@ -1,10 +1,18 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
+import AuthContext from "../context/AuthContext";
 
 import axios from "axios";
 
 export default function Header() {
   const [showMenu, setShowMenu] = useState(false);
+  const { user, logoutUser } = useContext(AuthContext);
+  const token = localStorage.getItem("authTokens");
+  if (token) {
+    const decoded = jwtDecode(token);
+    const user_id = decoded.user_id;
+  }
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
@@ -13,6 +21,24 @@ export default function Header() {
   const closeMenu = () => {
     setShowMenu(false);
   };
+  useEffect(() => {
+    
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 1) {
+        setShowMenu(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
 
   return (
     <div>
@@ -30,7 +56,7 @@ export default function Header() {
             TMS
           </a>
         </div>
-        {/* {userInfo.id === 0 || userInfo.id === undefined ? ( */}
+        {/* {token === null || userInfo.id === undefined ? ( */}
         <div className="">
           <Link to="/" className="linkHomePage ">
             Home
@@ -71,26 +97,26 @@ export default function Header() {
             </button>
           </div>
           {showMenu && (
-            <div className="absolute  z-50 right-1 px-2   bg-zinc-600 shadow-md py-2 rounded-md w-34">
-              {/* {userInfo.id === 0 || userInfo.id === undefined ? ( */}
-              <>
-                <Link
-                  to="/login"
-                  className="block regLogLinks hover:text-green-500  lg:mr-4 md:mr-2 sm:mr-1"
-                  onClick={closeMenu}
-                >
-                  Log in <span aria-hidden="true">&#10094;</span>
-                </Link>
+            <div className="absolute  z-50 right-8 px-2 top-14  bg-zinc-600 shadow-md py-2 rounded-md w-34">
+              {token !== null ? (
+                <>
+                  <Link
+                    to="/login"
+                    className="block regLogLinks hover:text-green-500  lg:mr-4 md:mr-2 sm:mr-1"
+                    onClick={closeMenu}
+                  >
+                    Log in <span aria-hidden="true">&#10094;</span>
+                  </Link>
 
-                <Link
-                  to="/register"
-                  className="block regLogLinks hover:text-amber-500  ml-1"
-                  onClick={closeMenu}
-                >
-                  Register <span aria-hidden="true">&#10094;</span>
-                </Link>
-              </>
-              {/* ) : (
+                  <Link
+                    to="/register"
+                    className="block regLogLinks hover:text-amber-500  "
+                    onClick={closeMenu}
+                  >
+                    Register <span aria-hidden="true">&#10094;</span>
+                  </Link>
+                </>
+              ) : (
                 <>
                   <Link
                     to="/reset"
@@ -108,45 +134,52 @@ export default function Header() {
                     <span aria-hidden="true">&nbsp;&#10094;</span>
                   </button>
                 </>
-              )} */}
+              )}
             </div>
           )}
           <div className=" hidden lg:inline-block ">
             <div className=" lg:flex lg:flex-1 lg:justify-end ">
-              {/* {userInfo.id === 0 || userInfo.id === undefined ? ( */}
-              <>
-                <Link
-                  to="/login"
-                  className="block regLogLinks hover:text-green-500  lg:mr-4 md:mr-2 sm:mr-1"
-                >
-                  Log in <span aria-hidden="true">&#10094;</span>
-                </Link>
+              {token === null  ? (
+                <>
+                  <Link
+                    to="/login"
+                    className="block regLogLinks hover:text-green-500  lg:mr-4 md:mr-2 sm:mr-1"
+                  >
+                    Log in <span aria-hidden="true">&#10094;</span>
+                  </Link>
 
-                <Link
-                  to="/register"
-                  className="block regLogLinks hover:text-amber-500  ml-1"
-                >
-                  Register <span aria-hidden="true">&#10094;</span>
-                </Link>
-              </>
-              {/* // ) : (
-              //   <>
-              //     <Link
-              //       to="/reset"
-              //       className="block regLogLinks hover:text-emerald-500 lg:mr-4 md:mr-2 sm:mr-1"
-              //     >
-              //       Change Password
-              //       <span aria-hidden="true">&nbsp;&#10094;</span>
-              //     </Link>
-              //     <button
-              //       className=" block regLogLinks hover:text-red-500 "
-              //       onClick={logout}
-              //     >
-              //       Logout
-              //       <span aria-hidden="true">&nbsp;&#10094;</span>
-              //     </button>
-              //   </>
-              // )} */}
+                  <Link
+                    to="/register"
+                    className="block regLogLinks hover:text-amber-500  ml-1"
+                  >
+                    Register <span aria-hidden="true">&#10094;</span>
+                  </Link>
+                </>
+              ) : (
+                <>
+                  {/* <Link
+                    to="/reset"
+                    className="block regLogLinks hover:text-emerald-500 lg:mr-4 md:mr-2 sm:mr-1"
+                  >
+                    Change Password
+                    <span aria-hidden="true">&nbsp;&#10094;</span>
+                  </Link> */}
+                  <Link
+                    to="/Dashboard"
+                    className="block regLogLinks hover:text-emerald-500 lg:mr-4 md:mr-2 sm:mr-1"
+                  >
+                    Dashboard
+                    <span aria-hidden="true">&nbsp;&#10094;</span>
+                  </Link>
+                  <button
+                    className=" block regLogLinks hover:text-red-500 "
+                    onClick={logoutUser}
+                  >
+                    Logout
+                    <span aria-hidden="true">&nbsp;&#10094;</span>
+                  </button>
+                </>
+              )}
             </div>
           </div>
         </div>

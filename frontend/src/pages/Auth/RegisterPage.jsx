@@ -1,15 +1,16 @@
 import axios from "axios";
 import { useState, useContext } from "react";
-// import { UserContext } from "../../context/UserContext";
+import AuthContext from "../../context/AuthContext";
 import { useNavigate, Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [rePassword, setRePassword] = useState("");
+  const [password2, setPassword2] = useState("");
+  const {registerUser} = useContext(AuthContext)
 
   const navigate = useNavigate();
 
@@ -26,23 +27,33 @@ export default function LoginPage() {
     });
   };
 
+  // const onSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const response = await axios.post(`${BACKEND_URL}/auth/users/`, {
+  //       email,
+  //       name,
+  //       password,
+  //       re_password: rePassword,
+  //     });
+  //     setToken(response.data.token);
+  //     console.log(response.data.token);
+  //     navigate("/activate/:uid/:token");
+  //     window.location.reload();
+  //   } catch (error) {
+  //     notify(error.response.data);
+  //   }
+  // };
+
   const onSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post(`${BACKEND_URL}/auth/users/`, {
-        email,
-        name,
-        password,
-        re_password: rePassword,
-      });
-      setToken(response.data.token);
-      console.log(response.data.token);
-      navigate("/activate/:uid/:token");
-      window.location.reload();
-    } catch (error) {
-      notify(error.response.data);
+    if (email && username && password && password2) {
+      await registerUser(email,username, password,password2);
+    } else {
+      notify("Please fill in all fields");
     }
   };
+
 
   return (
     <div
@@ -62,8 +73,8 @@ export default function LoginPage() {
           <input
             type="text"
             placeholder="Type your username "
-            value={name}
-            onChange={(ev) => setName(ev.target.value)}
+            value={username}
+            onChange={(ev) => setUsername(ev.target.value)}
             className="customInput "
           />
 
@@ -88,8 +99,8 @@ export default function LoginPage() {
           <input
             type="password"
             placeholder="Type your password"
-            value={rePassword}
-            onChange={(ev) => setRePassword(ev.target.value)}
+            value={password2}
+            onChange={(ev) => setPassword2(ev.target.value)}
             className="customInput"
           />
 
