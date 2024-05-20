@@ -38,7 +38,7 @@ export default function Dashboard() {
 
   return (
     
-    <div className="text-xl flex justify-center items-center bg-white m-10 h-full  rounded-lg ">
+    <div className="text-xl flex justify-center items-center bg-white m-10 mx-20 h-full  rounded-lg ">
       <div className="container mx-auto pt-16">
         <div className="flex">
           <nav className="w-1/5 bg-gray-100 mt-4">

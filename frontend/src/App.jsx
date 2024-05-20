@@ -9,6 +9,7 @@ import LoginPage from "./pages/Auth/LoginPage";
 import Dashboard from "./pages/Auth/Dashboard";
 import CoursesPage from "./pages/courses/CoursesPage";
 import CourseDetailsPage from "./pages/courses/CourseDetailsPage ";
+import UserProfilePage from "./pages/Auth/UserProfilePage";
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
           <Route path="/allcourses" element={<PrivateRoute><CoursesPage/></PrivateRoute>}/> 
           
           <Route path="/courses/:courseId" element={<PrivateRoute><CourseDetailsPage/></PrivateRoute>}/> 
+          <Route path="/users/:userId" element={<PrivateRoute><UserProfilePage/></PrivateRoute>}/> 
          
         </Route>
         </Routes>

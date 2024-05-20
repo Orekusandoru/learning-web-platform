@@ -45,3 +45,27 @@ def testEndPoint(request):
         data = f'Congratulation your API just responded to POST request with text: {text}'
         return Response({'response': data}, status=status.HTTP_200_OK)
     return Response({}, status.HTTP_400_BAD_REQUEST)
+
+from .models import Profile
+
+@api_view(['GET'])
+def get_user_profile(request, user_id):
+    try:
+        user = User.objects.get(pk=user_id)
+        profile = Profile.objects.get(user=user)
+        return Response({
+            'user': {
+                'username': user.username,
+                'email': user.email,
+            },
+            'profile': {
+                'full_name': profile.full_name,
+                'bio': profile.bio,
+                'image': profile.image.url,
+                
+            }
+        })
+    except User.DoesNotExist:
+        return Response({'error': 'User not found'}, status=404)
+    except Profile.DoesNotExist:
+        return Response({'error': 'Profile not found'}, status=404)

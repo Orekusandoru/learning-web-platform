@@ -16,7 +16,7 @@ export default function Footer() {
 
       <div className="bg-neutral-700 p-2 text-center">
         © 2023 Copyright:
-        <a href="https://tw-elements.com/">TW Elements</a>
+        <a className="pl-1" >Learning Materials</a>
       </div>
     </div>
   );

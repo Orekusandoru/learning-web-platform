@@ -36,7 +36,7 @@ export default function CoursesPage() {
 
   const subscribeToCourse = async (courseId) => {
     try {
-      const response = await api.post(`${BACKEND_URL}/course/subscribe/`, {
+      const response = await api.post(`${BACKEND_URL}/courses/subscribe/`, {
         course_id: courseId,
       });
       console.log("Subscription Response:", response.data);
@@ -125,7 +125,9 @@ export default function CoursesPage() {
                 <button
                   onClick={() => handleSort("date")}
                   className={`px-4 py-2 mr-2 ${
-                    sortType === "date" ? "bg-blue-500 text-white" : "bg-gray-200"
+                    sortType === "date"
+                      ? "bg-blue-500 text-white"
+                      : "bg-gray-200"
                   } rounded-md`}
                 >
                   Sort by Date
@@ -133,7 +135,9 @@ export default function CoursesPage() {
                 <button
                   onClick={() => handleSort("name")}
                   className={`px-4 py-2 ${
-                    sortType === "name" ? "bg-blue-500 text-white" : "bg-gray-200"
+                    sortType === "name"
+                      ? "bg-blue-500 text-white"
+                      : "bg-gray-200"
                   } rounded-md`}
                 >
                   Sort by Name
@@ -143,7 +147,9 @@ export default function CoursesPage() {
                 <button
                   onClick={() => handleFilter("all")}
                   className={`px-4 py-2 mr-2 ${
-                    filterType === "all" ? "bg-blue-500 text-white" : "bg-gray-200"
+                    filterType === "all"
+                      ? "bg-blue-500 text-white"
+                      : "bg-gray-200"
                   } rounded-md`}
                 >
                   All
@@ -187,27 +193,29 @@ export default function CoursesPage() {
                       src={course.thumbnail}
                       alt={course.name}
                     />
-                    <div className="p-4">
-                      <h3 className="font-bold text-lg">{course.name}</h3>
-                      <p className="text-gray-600">{course.description}</p>
-                      <p className="text-gray-600">{new Date(course.date).toLocaleDateString()}</p>
-                      {course.is_subscribed ? (
-                        <button
-                          className="mt-2 bg-gray-500 text-white px-4 py-2 rounded-md"
-                          disabled
-                        >
-                          Subscribed
-                        </button>
-                      ) : (
-                        <button
-                          onClick={() => subscribeToCourse(course.id)}
-                          className="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md"
-                        >
-                          Subscribe
-                        </button>
-                      )}
-                    </div>
                   </Link>
+                  <div className="p-4">
+                    <h3 className="font-bold text-lg">{course.name}</h3>
+                    <p className="text-gray-600">{course.description}</p>
+                    <p className="text-gray-600">
+                      {new Date(course.date).toLocaleDateString()}
+                    </p>
+                    {course.is_subscribed ? (
+                      <button
+                        className="mt-2 bg-gray-500 text-white px-4 py-2 rounded-md"
+                        disabled
+                      >
+                        Subscribed
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => subscribeToCourse(course.id)}
+                        className="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md"
+                      >
+                        Subscribe
+                      </button>
+                    )}
+                  </div>
                 </div>
               ))}
             </div>

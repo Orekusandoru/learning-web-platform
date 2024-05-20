@@ -60,8 +60,8 @@ const LoginPage = () => {
          flex flex-col justify-center items-center "
     >
       <div
-        className="bg-white px-8 pt-8 pb-12
-            rounded-sm shadow-2xl my-32"
+        className="bg-white px-8 pt-8 pb-8
+            rounded-lg shadow-2xl my-32"
       >
         <form className=" " onSubmit={(e) => onSubmit(e)}>
           <h1 className="text-black tracking-wide text-3xl font-black mb-8 centerForm">
@@ -89,7 +89,7 @@ const LoginPage = () => {
             className="customInput"
           />
 
-          <div className="centerForm pt-2">
+          <div className="centerForm pt-4">
             
             <button className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-2xl group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800" type="submit">
               <span className="relative px-10 py-1.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-2xl group-hover:bg-opacity-0">
@@ -109,7 +109,7 @@ const LoginPage = () => {
             </p>
           </div>
 
-          <div className="flex justify-center">
+          {/* <div className="flex justify-center">
             <p>
               Forgot password?
               <Link
@@ -119,7 +119,7 @@ const LoginPage = () => {
                 Reset Password
               </Link>
             </p>
-          </div>
+          </div> */}
         </form>
         <ToastContainer
           position="top-right"

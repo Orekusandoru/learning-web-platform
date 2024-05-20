@@ -63,6 +63,7 @@ def getVideosForCourse(request, course_id):
 
 @permission_classes([IsAuthenticated])
 class SubscribeView(APIView):
+    
     def post(self, request, *args, **kwargs):
         user = request.user
         course_id = request.data.get('course_id')
