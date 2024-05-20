@@ -12,27 +12,25 @@ body {
   font-family: "Nunito Sans", sans-serif;
   margin: 0;
   padding: 0;
- 
 
-  background: linear-gradient(to right, #6b21a8, #86198f);
+  background:  url('/bg.jpg'); 
   background-attachment: fixed;
-  min-width: 200px; /* Мінімальна ширина сайту */
-  overflow-x: hidden;
-  overflow-y: hidden;
+  background-size: cover; 
+  background-repeat: no-repeat;
+  min-width: 200px; 
 }
 
 .custom-scroll-history::-webkit-scrollbar {
-  width: 10px; 
+  width: 10px;
 }
 
 .custom-scroll-history::-webkit-scrollbar-thumb {
   background-color: #4caf50;
   cursor: grab;
- 
 }
 .custom-scroll-history {
   scrollbar-width: thin;
-  
+
   scrollbar-color: #ccc; /* Колір полоси та фону */
 }
 
@@ -82,7 +80,7 @@ body {
   @apply h-[44.5rem] overflow-auto custom-scrollbar;
 }
 .customInput {
-  @apply mt-2 w-72 py-3 px-2 border border-gray-300 rounded hover:bg-violet-100 focus:ring-inset focus:ring-red-600 ;
+  @apply mt-2 w-72 py-3 px-2 border border-gray-300 rounded hover:bg-violet-100 focus:ring-inset focus:ring-red-600;
 }
 
 .memInput {
@@ -115,14 +113,12 @@ body {
 .bgDetails {
   @apply bg-purple-700 hover:bg-purple-600 px-4;
 }
-.detailsInfo{
-  @apply bg-gray-500 w-fit p-1 mb-2 rounded text-white
+.detailsInfo {
+  @apply bg-gray-500 w-fit p-1 mb-2 rounded text-white;
 }
 
-.bgStage{
- 
-  
-  background: linear-gradient(to right,); 
+.bgStage {
+  background: linear-gradient(to right);
 }
 /* CSS */
 @keyframes gradientMovement {
@@ -138,7 +134,7 @@ body {
 }
 
 .bgStage {
-  background: linear-gradient(to right,  #1fc944, #3f5efb);
+  background: linear-gradient(to right, #1fc944, #3f5efb);
   animation: gradientMovement 3s linear infinite; /* 5s - час анімації */
   background-size: 200% 200%; /* Збільшення розміру градієнту для зміни позиції */
 }

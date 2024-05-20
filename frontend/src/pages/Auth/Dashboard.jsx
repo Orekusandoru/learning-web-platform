@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import useAxios from "../../utils/useAxios";
-import {jwtDecode} from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 
 export default function Dashboard() {
   const [res, setRes] = useState("");
@@ -36,14 +37,18 @@ export default function Dashboard() {
   }, [api]);
 
   return (
-    <div className="text-xl flex justify-center items-center bg-white">
+    
+    <div className="text-xl flex justify-center items-center bg-white m-10 h-full  rounded-lg ">
       <div className="container mx-auto pt-16">
         <div className="flex">
           <nav className="w-1/5 bg-gray-100 mt-4">
             <div className="sticky top-0 p-4">
               <ul className="space-y-2">
                 <li>
-                  <a className="block py-2 px-4 bg-blue-500 text-white rounded-md" href="#">
+                  <a
+                    className="block py-2 px-4 bg-blue-500 text-white rounded-md"
+                    href="#"
+                  >
                     Dashboard
                   </a>
                 </li>
@@ -53,11 +58,11 @@ export default function Dashboard() {
           <main className="flex-1 p-4">
             <div className="flex justify-between items-center pb-2 mb-3 border-b border-gray-200">
               <h1 className="text-2xl font-semibold">My Dashboard</h1>
-              <span>Hello {username}!</span>
+              <span className="text-xl font-semibold">Hello {username}!</span>
               <div className="flex space-x-2">
-                <button className="px-4 py-2 text-sm border border-gray-300 rounded-md hover:bg-gray-100">
+                {/* <button className="px-4 py-2 text-sm border border-gray-300 rounded-md hover:bg-gray-100">
                   Share
-                </button>
+                </button> */}
               </div>
             </div>
             <canvas className="my-4 w-full h-6" id="myChart"></canvas>
@@ -70,17 +75,35 @@ export default function Dashboard() {
                   <tr>
                     <th className="py-2 px-4 border-b border-gray-300">#</th>
                     <th className="py-2 px-4 border-b border-gray-300">Name</th>
-                    <th className="py-2 px-4 border-b border-gray-300">Description</th>
-                    <th className="py-2 px-4 border-b border-gray-00">Date Subscribed</th>
+                    <th className="py-2 px-4 border-b border-gray-300">
+                      Description
+                    </th>
+                    <th className="py-2 px-4 border-b border-gray-00">
+                      Date Subscribed
+                    </th>
                   </tr>
                 </thead>
                 <tbody className=" bg-slate-300">
                   {userCourses.map((course, index) => (
                     <tr key={course.id}>
-                      <td className="py-2 px-4 border-b border-gray-200">{index + 1}</td>
-                      <td className="py-2 px-4 border-b border-gray-200">{course.course.name}</td>
-                      <td className="py-2 px-4 border-b border-gray-200">{course.course.description}</td>
-                      <td className="py-2 px-4 border-b border-gray-200">{new Date(course.date).toLocaleDateString()}</td>
+                      <td className="py-2 px-4 border-b border-gray-200">
+                        <Link to={`/courses/${course.id}`}>{index + 1} </Link>
+                      </td>
+                      <td className="py-2 px-4 border-b border-gray-200">
+                        <Link to={`/courses/${course.id}`}>
+                          {course.course.name}
+                        </Link>
+                      </td>
+                      <td className="py-2 px-4 border-b border-gray-200">
+                        <Link to={`/courses/${course.id}`}>
+                          {course.course.description}
+                        </Link>
+                      </td>
+                      <td className="py-2 px-4 border-b border-gray-200">
+                        <Link to={`/courses/${course.id}`}>
+                          {new Date(course.date).toLocaleDateString()}
+                        </Link>
+                      </td>
                     </tr>
                   ))}
                 </tbody>

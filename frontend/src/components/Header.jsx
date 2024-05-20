@@ -39,27 +39,30 @@ export default function Header() {
 
   return (
     <div>
-      <nav className=" flex items-center justify-between p-6 ">
+      <nav className=" flex items-center justify-between p-4 ">
         <div className="flex lg:flex-1   ">
           <a href="/" className="pr-1  ">
             <span className="sr-only">Your Company</span>
-            <img
-              className="h-8 max-w-none border-[2px] border-black rounded-md"
-              src="/icon.svg"
-              alt=""
-            />
+            <img className="h-8 max-w-none " src="/learning.png" alt="" />
           </a>
           <a className="text-2xl font-extrabold pr-2" href="/">
-            TMS
+            Learning platform
           </a>
         </div>
-        {token !== null  ? (
-          <div className="">
+        {token !== null ? (
+          <div className="ml-12">
             <Link to="/" className="linkHomePage ">
               Home
             </Link>
             <Link to="/allcourses" className="linkHomePage">
               Courses
+            </Link>
+            <Link
+              to="/Dashboard"
+              className="linkHomePage"
+            >
+              Dashboard
+              <span aria-hidden="true">&nbsp;&#10094;</span>
             </Link>
           </div>
         ) : (
@@ -157,13 +160,7 @@ export default function Header() {
                     Change Password
                     <span aria-hidden="true">&nbsp;&#10094;</span>
                   </Link> */}
-                  <Link
-                    to="/Dashboard"
-                    className="block regLogLinks hover:text-emerald-500 lg:mr-4 md:mr-2 sm:mr-1"
-                  >
-                    Dashboard
-                    <span aria-hidden="true">&nbsp;&#10094;</span>
-                  </Link>
+
                   <button
                     className=" block regLogLinks hover:text-red-500 "
                     onClick={logoutUser}

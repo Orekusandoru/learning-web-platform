@@ -34,9 +34,9 @@ const CourseDetailsPage = () => {
   return (
     <div className="container mx-auto flex bg-gray-500">
     {course && (
-      <div className="w-2/3 p-6 mb-10">
+      <div className="w-2/3 pl-6  pt-6 mb-10">
         {/* Course name */}
-        <h1 className="text-xl font-bold mb-4">{course.name}</h1>
+        <h1 className="text-4xl font-bold mb-4 text-white">{course.name}</h1>
         
         {/* Selected Video */}
         {selectedVideo && (
@@ -62,7 +62,7 @@ const CourseDetailsPage = () => {
     {videos.length !== 0 ? (
       
       <div className="w-1/3  p-6 ">
-        <h2 className="text-lg font-bold">Lectures</h2>
+        <h2 className="text-2xl text-white font-bold">Lectures</h2>
         <div className="grid  gap-3 mt-4">
           {videos.map((video) => (
             <div

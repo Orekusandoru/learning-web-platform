@@ -5,7 +5,7 @@ import Footer from "./Footer";
 export default function Layout() {
   return (
     <div className="flex flex-col h-screen">
-      <header className="bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg  ">
+      <header className="bg-gradient-to-r from-neutral-600 to-stone-500 text-white shadow-lg  ">
         <Header />
       </header>
 
