@@ -29,8 +29,8 @@ export default function HomePage() {
                       Learning platform!
                     </h1>
                     <h1 className="mb-9 text-2xl font-semibold text-gray-200">
-                      Sign up or Sign in if you already have an account to get
-                      access to our team task management system
+                      On this site, you can take a look at the available
+                      courses, use the navigation bar, and go for the victories!
                     </h1>
                   </>
                 ) : (
@@ -38,9 +38,9 @@ export default function HomePage() {
                     <h1 className="mb-5 text-6xl font-bold text-white">
                       Hello new Student!
                     </h1>
-                    <h1 className="mb-9 text-2xl font-semibold text-gray-200">
-                      On this site, you can take a look at the available
-                      courses, use the navigation bar, and go for the victories!
+                    <h1 className="mb-9 text-2xl font-semibold text-gray-200 text-">
+                      Sign up or Sign in if you already have an account to get
+                      access to our team task management system
                     </h1>
 
                     <Link
