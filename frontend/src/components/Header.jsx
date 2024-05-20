@@ -21,9 +21,7 @@ export default function Header() {
   const closeMenu = () => {
     setShowMenu(false);
   };
-  useEffect(() => {
-    
-  }, []);
+  useEffect(() => {}, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -38,7 +36,6 @@ export default function Header() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
 
   return (
     <div>
@@ -56,32 +53,28 @@ export default function Header() {
             TMS
           </a>
         </div>
-        {/* {token === null || userInfo.id === undefined ? ( */}
-        <div className="">
-          <Link to="/" className="linkHomePage ">
-            Home
-          </Link>
-          <Link to="/about" className="linkHomePage">
-            About
-          </Link>
-          <Link to="/help" className="regLogLinks  hover:text-red-500">
-            Help
-          </Link>
-        </div>
-
-        {/* // ) : (
-        //   <div className="">
-        //     <Link to="/showTeam" className="linkHomePage ">
-        //       Teams
-        //     </Link>
-        //     <Link to="/" className="linkHomePage">
-        //       Home
-        //     </Link>
-        //     <Link to="/about" className="regLogLinks  hover:text-red-500">
-        //       About
-        //     </Link>
-        //   </div>
-        // )} */}
+        {token !== null  ? (
+          <div className="">
+            <Link to="/" className="linkHomePage ">
+              Home
+            </Link>
+            <Link to="/allcourses" className="linkHomePage">
+              Courses
+            </Link>
+          </div>
+        ) : (
+          <div className="">
+            <Link to="/showTeam" className="linkHomePage ">
+              Teams
+            </Link>
+            <Link to="/" className="linkHomePage">
+              Home
+            </Link>
+            <Link to="/about" className="regLogLinks  hover:text-red-500">
+              About
+            </Link>
+          </div>
+        )}
 
         <div className=" lg:flex lg:flex-1 lg:justify-end lg:gap-x-6 mr-3 ">
           <div className="lg:hidden ">
@@ -139,7 +132,7 @@ export default function Header() {
           )}
           <div className=" hidden lg:inline-block ">
             <div className=" lg:flex lg:flex-1 lg:justify-end ">
-              {token === null  ? (
+              {token === null ? (
                 <>
                   <Link
                     to="/login"

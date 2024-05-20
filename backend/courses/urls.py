@@ -1,9 +1,13 @@
-
 from django.urls import path
-from courses import views
+from .views import getAllCourses, getUserCourses, getVideo, SubscribeView, getCourseDetail,getVideosForCourse
 
 urlpatterns = [
-    path('courses/', views.getAllCourses, name='all_courses'),
-    path('my-courses/', views.getUserCourses, name='user_courses'),
-    path('courses/<slug:course_slug>/lecture/<int:serial_number>/', views.getVideo, name='course_video'),
+    path('courses/', getAllCourses, name='course-list'),
+    path('my-courses/', getUserCourses, name='my-courses'),
+    path('courses/<slug:course_slug>/lecture/<int:serial_number>/', getVideo, name='lecture-detail'),
+    path('subscribe/', SubscribeView.as_view(), name='subscribe'),
+    path('courses/<int:pk>/', getCourseDetail, name='course-detail'),
+    path('courses/<int:course_id>/videos/', getVideosForCourse, name='course-videos'),
+
+
 ]
